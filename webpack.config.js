@@ -10,8 +10,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	mode: 'development',
-	entry: ['@babel/polyfill','./src/index.js'],
-
+	entry: {
+        polyfill: 'babel-polyfill',
+        app: './src/index.js'
+    },
+	
 	output: {
 		filename: '[name].[chunkhash].js',
 		path: path.resolve(__dirname, 'dist')
@@ -20,6 +23,7 @@ module.exports = {
 	plugins: [
 		new webpack.ProgressPlugin(), 
 		new HtmlWebpackPlugin({
+		filename: `index.html`,
 		template: './src/index.html'
 			}),	
 			new MiniCssExtractPlugin({
@@ -33,28 +37,20 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /.(js|jsx)$/,
-				include: [path.resolve(__dirname, 'src')],
-				loader: 'babel-loader',
-
-				options: {
-					plugins: ['syntax-dynamic-import'],
-
-					presets: [
-						[
-							'@babel/preset-env',
-							{
-								modules: false
-							}
-						]
-					]
-				}
-			},
+                test: /\.m?js$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            },
 			{
 				test: /\.scss$/,
 				use: [
 					// fallback to style-loader in development
-					process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+					 MiniCssExtractPlugin.loader,
 					"css-loader",
 					"sass-loader"
 				]
@@ -75,7 +71,7 @@ module.exports = {
 		]
 	},
 
-	optimization: {
+/* 	optimization: {
 		splitChunks: {
 			cacheGroups: {
 				vendors: {
@@ -90,8 +86,11 @@ module.exports = {
 			name: true
 		}
 	},
-
+ */
 	devServer: {
+		contentBase: path.join(__dirname, 'dist'),
+		compress: true,
+		port: 9000,
 		open: true
-	}
+	},
 };
