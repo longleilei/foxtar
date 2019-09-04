@@ -1,0 +1,232 @@
+@import "./variables"; 
+
+@mixin flex-row() {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin flex-between() {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@mixin flex-center() {
+    display: flex;
+    align-items: center;
+}
+
+@mixin flex-column() {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flex-around() {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+@mixin flex-evenly() {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+@mixin container() {
+    max-width: 1170px;
+    margin: auto;
+}
+
+@mixin btn-tab {
+    height: 37px;
+    font-family: "Roboto Medium", sans-serif;
+    color: #263238;  
+    font-size: 14px;
+    line-height: 37px;  
+    text-align: center;
+    padding: 0 28px;
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
+@mixin product-card() {
+    width: 442px;
+    height: 413px;
+    border: $border-color;
+    margin-bottom: 31px;
+
+    .image-box {
+        width: 100%;
+        height: 254px;
+        background-color: $no-image-color;
+        position: relative;
+
+        .bolt {
+            top: 0;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 63px solid $green;
+            border-right: 64px solid transparent;
+
+            i {
+                color: $white;
+                font-size: 16px;
+                bottom: 30px;
+                left: 15px;
+                position: absolute;
+
+            }
+        }
+    }
+    
+    .main-info {
+        @include flex-column;
+        height: 91px;
+        border: $border-color;
+        text-align: left;
+        padding: 20px;
+
+        .info-name {
+            .product-name {
+                font-family: $medium;
+                font-size: 18px;
+                color: $background-blue;
+
+            }
+
+            .product-detail {
+                font-family: $medium;
+                font-size: 14px;
+                color: #888f80;
+                padding-top: 15px;
+            }
+
+           
+        }
+        .product-price {
+            font-family: $medium;
+            font-size: 18px;
+            color: $background-blue;
+            text-align: right;
+
+        }
+    }
+
+    .additional-info {
+        @include flex-row();
+        padding: 7px 20px;
+
+        h3 {
+            font-family: $medium;
+            font-size: 14px;
+            color: $background-blue;
+        }
+
+        i {
+            color: gold;
+        }
+
+        .circle-icon {
+            height: 45px;
+            width: 45px;
+            background-color: $no-image-color;
+            border-radius: 50%;
+            margin-right: 15px;
+
+        }
+    }
+}
+
+@mixin gray-line{
+    width: 209px;
+    height:1px; 
+    background-color: $border-color; 
+}
+
+@mixin filters-title{
+    font-family: $bold; 
+    font-size: 20px;
+    font-weight: bold; 
+}
+
+@mixin mini-product{
+        width: 208px;
+        height: 255px;
+        border: $border-color;
+        margin-bottom: 31px;
+    
+        .image-box {
+            width: 100%;
+            height: 254px;
+            background-color: $no-image-color;
+            position: relative;
+            }
+        
+        .main-info {
+            @include flex-column;
+            height: 91px;
+            border: $border-color;
+            text-align: left;
+            padding: 20px;
+    
+            .info-name {
+                .product-name {
+                    font-family: $medium;
+                    font-size: 18px;
+                    color: $background-blue;
+    
+                }
+    
+                .product-detail {
+                    font-family: $medium;
+                    font-size: 14px;
+                    color: #888f80;
+                    padding-top: 15px;
+                }
+    
+               
+            }
+            .product-price {
+                font-family: $medium;
+                font-size: 18px;
+                color: $background-blue;
+                text-align: right;
+    
+            }
+        }
+    
+        .additional-info {
+            @include flex-row();
+            padding: 7px 20px;
+    
+            h3 {
+                font-family: $medium;
+                font-size: 14px;
+                color: $background-blue;
+            }
+    
+            i {
+                color: gold;
+            }
+    
+            .circle-icon {
+                height: 45px;
+                width: 45px;
+                background-color: $no-image-color;
+                border-radius: 50%;
+                margin-right: 15px;
+    
+            }
+        }
+    }
+    @mixin super-button{
+        width: 205px; 
+        height:45px; 
+        background-color: #8bc34a; 
+        cursor:pointer; 
+        font-family: $medium; 
+        color: #ffffff; 
+        margin: auto; 
+    }

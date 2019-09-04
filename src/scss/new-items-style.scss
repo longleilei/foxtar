@@ -1,0 +1,141 @@
+@import "./../css/reset.css";
+
+@import "./mixin.scss";
+@import "./variables.scss";
+
+
+
+
+.main-container{
+    background: #fff; 
+    width: 100%; 
+    .container{
+        width: 1170px;
+        .menu-block{
+            @include flex-row(); 
+            font-family: $regular; 
+            font-size:15px; 
+            color: #263238;
+            }
+        } 
+        .data-block{
+            @include flex-column(); 
+            width: 100%;
+            .filters{
+                @include flex-column(); 
+                width: 270px; 
+                .categories{
+                    @include flex-column(); 
+                    width: 100%; 
+                    height: 312px;
+                    .filters-title{
+                        @include filters-title(); 
+                    }
+                    .gray-line{
+                        @include gray-line(); 
+                    }
+                    .fa-ul{
+                        display: inline-block; 
+                        li{
+                            @include flex-betwen(); 
+                            width: 210px; 
+                            font-family: $regular; 
+                            font-size: 15px; 
+                            font-weight: bold; 
+                            color: #263238; 
+                            span{
+                                font-family: $regular; 
+                                font-size: 15px; 
+                                font-weight: bold; 
+                                color: #263238; 
+                            }
+
+                        }
+                    }
+                }
+                .price-range{
+                    @include flex-column(); 
+                    width: 100%; 
+                    height: 245px; 
+                    .filters-title{
+                        @include filters-title(); 
+                    }
+                    .gray-line{
+                        @include gray-line(); 
+                    }
+                    .big-button{
+                        @include flex-row(); 
+                        @include super-button(); 
+                    }
+                    
+                }
+                .top-sellers{
+                    @include flex-column(); 
+                    width: 100%; 
+                    height: 100%; 
+                    .filters-title{
+                        @include filters-title(); 
+                    }
+                    .gray-line{
+                        @include gray-line(); 
+                    }
+                    .mini-product{
+                        @include mini-product(); 
+                    }
+                    .view-option{
+                        @include super-button();
+                    }
+                    
+                }
+
+            }
+            
+            .data{
+                @include flex-column(); 
+                width: 100%; 
+                .sort-box{
+                    @include flex-betwen(); 
+                    height: 10px; 
+                    width: 100%; 
+                    background-color: #fff; 
+                    .left-sort-box{
+                        @include flex-row(); 
+                        font-family: $regular; 
+                        font-size: 14px; 
+                        color: #707070; 
+                    }
+                    .right-sort-box{
+                        @include flex-row(); 
+                        margin-right: 26px; 
+
+                    }
+                }
+                .card-container{
+                    @include flex-between(); 
+                    width:100%; 
+                    .product{
+                        @include product-card(); 
+                    }
+
+                }
+            }
+            
+
+        } 
+        .page-button{
+            @include flex-row(); 
+            .small-button{
+            width: 42px; 
+            height: 40px;
+            font-family: $medium; 
+            font-size: 16px; 
+            color:#263238; 
+            cursor:pointer; 
+                &.active{
+                    background-color: red; 
+                    color: white; 
+                } 
+            }
+        }
+         
+    }
