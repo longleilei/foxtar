@@ -1,10 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 require("@babel/polyfill");
 
-
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 
@@ -21,12 +21,17 @@ module.exports = {
 	},
 
 	plugins: [
+		new CleanWebpackPlugin(),
 		new webpack.ProgressPlugin(), 
 		new HtmlWebpackPlugin({
 		filename: `index.html`,
 		template: './src/index.html'
-			}),	
-			new MiniCssExtractPlugin({
+			}),
+		new HtmlWebpackPlugin({
+				filename: `new-items.html`,
+				template: './src/new-items.html'
+			}),		
+		new MiniCssExtractPlugin({
 				// Options similar to the same options in webpackOptions.output
 				// both options are optional
 				filename: "[name].css",
@@ -58,15 +63,27 @@ module.exports = {
 			{
 				test: /\.(gif|png|jpe?g|svg)$/i,
 				use: [
-				  'file-loader',
 				  {
-					loader: 'image-webpack-loader',
+					loader: 'file-loader',
 					options: {
-					  bypassOnDebug: true, // webpack@1.x
-					  disable: true, // webpack@2.x and newer
+					  name: '[name].[ext]',
+					  outputPath: 'img',
+					 // bypassOnDebug: true, // webpack@1.x
+					 // disable: true, // webpack@2.x and newer
 					},
 				  },
 				],
+			},
+			{
+				test: /\.(html)$/,
+				use: {
+					loader: 'html-loader',
+					options: {
+						attrs: ['img:src'],
+						minimize: true,
+						root: path.resolve(__dirname, 'dist')
+					}
+				}
 			}
 		]
 	},
@@ -91,6 +108,7 @@ module.exports = {
 		contentBase: path.join(__dirname, 'dist'),
 		compress: true,
 		port: 9000,
-		open: true
+		open: true,
+		watchContentBase: true
 	},
 };

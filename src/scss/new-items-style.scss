@@ -1,7 +1,5 @@
-@import "./../css/reset.css";
 
 @import "./mixin.scss";
-@import "./variables.scss";
 
 
 
@@ -9,8 +7,10 @@
 .main-container{
     background: #fff; 
     width: 100%; 
+   
     .container{
         width: 1170px;
+        margin:auto;
         .menu-block{
             @include flex-row(); 
             font-family: $regular; 
@@ -37,7 +37,7 @@
                     .fa-ul{
                         display: inline-block; 
                         li{
-                            @include flex-betwen(); 
+                            @include flex-between(); 
                             width: 210px; 
                             font-family: $regular; 
                             font-size: 15px; 
@@ -94,7 +94,7 @@
                 @include flex-column(); 
                 width: 100%; 
                 .sort-box{
-                    @include flex-betwen(); 
+                    @include flex-between(); 
                     height: 10px; 
                     width: 100%; 
                     background-color: #fff; 
